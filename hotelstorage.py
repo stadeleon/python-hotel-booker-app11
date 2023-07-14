@@ -1,35 +1,28 @@
-import pandas as pd
+from storage import Storage
 from hotel import Hotel
 
 
-class HotelStorage:
+class HotelStorage(Storage):
+    DATATYPE = {'id': int, 'capacity': int, 'price': float}
+
     def __init__(self):
-        self.hotels_list = {}
+        self.hotels = {}
 
     def populate(self, data):
         for hotel in [Hotel(row) for row in data]:
             self.add(hotel)
 
-    def import_from_file(self, filename):
-        df = pd.read_csv(filename, dtype={'id': int, 'capacity': int})
-        data = pd.DataFrame(df).to_dict('index')
-        self.populate(data.values())
-
-    def export_to_file(self, filename):
-        with open(filename, 'w') as file:
-            file.write(str(self))
-
     def add(self, hotel: Hotel):
-        self.hotels_list[hotel.id] = hotel
+        self.hotels[hotel.id] = hotel
 
     def list(self):
-        return self.hotels_list
+        return self.hotels
 
     def get_by_id(self, hotel_id):
-        return self.hotels_list[hotel_id]
+        return self.hotels[hotel_id]
 
     def __str__(self):
-        result = 'id,name,city,capacity,available\n'
-        for hotel in self.hotels_list.values():
+        result = 'id,name,city,capacity,price,available\n'
+        for hotel in self.hotels.values():
             result += str(hotel) + '\n'
         return result
