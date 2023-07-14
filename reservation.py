@@ -1,5 +1,5 @@
-from User import User
-from Hotel import Hotel
+from user import User
+from hotel import Hotel
 
 
 class Reservation:

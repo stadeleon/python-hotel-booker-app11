@@ -1,6 +1,6 @@
-from User import User
-from Reservation import Reservation
-from HotelStorage import HotelStorage
+from user import User
+from reservation import Reservation
+from hotelstorage import HotelStorage
 
 
 hotels = HotelStorage()

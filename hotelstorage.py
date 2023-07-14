@@ -1,5 +1,5 @@
 import pandas as pd
-from Hotel import Hotel
+from hotel import Hotel
 
 
 class HotelStorage:
