@@ -1,10 +1,10 @@
-from cardstorage import CardStorage
+from storage.cardstorage import CardStorage
 
 
 class PaymentProcessor:
     def __init__(self, card_number: str, card_holder: str, expiration_date: str):
         self.card_storage = CardStorage()
-        self.card_storage.import_from_file("cards.csv")
+        self.card_storage.import_from_file("storage/data/cards.csv")
 
         self.card_number = card_number
         self.card_holder = card_holder
@@ -22,6 +22,6 @@ class PaymentProcessor:
             payment_sum
         )
 
-        self.card_storage.export_to_file("cards.csv")
+        self.card_storage.export_to_file("storage/data/cards.csv")
 
         return payment_result
