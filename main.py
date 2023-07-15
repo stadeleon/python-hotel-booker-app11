@@ -44,14 +44,14 @@ while True:
             print(payment['error'])
             continue
 
-        reservation = Reservation(user, hotel)
-        reservation.complete()
-        print(reservation.generate_receipt())
-
         spa = input('Do you want to book a SPA package? (yes/no)')
         if 'yes' == spa.lower():
-            spa_reservation = SpaReservation(user, hotel)
-            print(spa_reservation.generate_receipt())
+            reservation = SpaReservation(user, hotel)
+        else:
+            reservation = Reservation(user, hotel)
+
+        reservation.complete()
+        print(reservation.generate_receipt())
 
         hotels.export_to_file("storage/data/hotels.csv")
     else:
