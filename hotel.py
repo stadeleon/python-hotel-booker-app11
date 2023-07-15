@@ -4,6 +4,7 @@ class Hotel:
         self.name = data['name']
         self.city = data['city']
         self.capacity = data['capacity']
+        self.price = data['price']
         self.available = data['available'].lower() == 'yes'
 
     def book(self):
@@ -13,5 +14,5 @@ class Hotel:
         return self.available
 
     def __str__(self):
-        return f"{self.id},{self.name},{self.city},{self.capacity}," \
+        return f"{self.id},{self.name},{self.city},{self.capacity},{self.price}," \
                f"{'yes' if self.available else 'no'}"
